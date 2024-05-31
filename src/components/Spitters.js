@@ -13,7 +13,7 @@ const Spitters = () => {
   }, []);
 
   const fetchSpitters = () => {
-    axios.get('http://localhost:5000/api/spittr/spitters')
+    axios.get('http://localhost:5000/spitters')
       .then(response => {
         console.log(response.data);
         setSpitters(response.data);
@@ -24,7 +24,7 @@ const Spitters = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/spittr/spitters/${id}`)
+    axios.delete(`http://localhost:5000/spitters/${id}`)
       .then(response => {
         console.log('Spitter deleted:', response);
         fetchSpitters();

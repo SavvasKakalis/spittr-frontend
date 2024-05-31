@@ -17,7 +17,7 @@ const AddSpitter = ({onSpitterAdded}) => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/spittr/spitters', newSpitter, {
+      await axios.post('http://localhost:5000/spitters', newSpitter, {
         headers: {
           'Content-Type': 'application/json'
         }

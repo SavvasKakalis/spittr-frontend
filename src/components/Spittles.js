@@ -7,7 +7,7 @@ const Spittles = () => {
     const [spittles, setSpittles] = useState([]);
 
     useEffect(() => {
-      axios.get('http://localhost:5000/api/spittr/spittles')
+      axios.get('http://localhost:5000/spittles')
         .then(response => {
           console.log(response.data);
           setSpittles(response.data);
