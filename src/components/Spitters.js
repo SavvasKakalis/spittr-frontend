@@ -13,7 +13,7 @@ const Spitters = () => {
   }, []);
 
   const fetchSpitters = () => {
-    axios.get('http://localhost:8080/api/spittr/spitters')
+    axios.get('http://localhost:5000/api/spittr/spitters')
       .then(response => {
         console.log(response.data);
         setSpitters(response.data);
