@@ -1,0 +1,55 @@
+{
+    "spitters": [
+      {
+        "id": 4,
+        "username": "geo",
+        "password": "geo7777777777",
+        "fullName": "George Pit",
+        "spittles": [
+          {
+            "id": 11,
+            "message": "Good morning people!!!",
+            "timeSubmitted": "2008-09-23T07:10:10.000+00:00",
+            "spitter_id": 4
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "username": "nick",
+        "password": "nick123",
+        "fullName": "Nick Kalathis",
+        "spittles": []
+      },
+      {
+        "id": 7,
+        "username": "savas",
+        "password": "savas",
+        "fullName": "savvas kakalis",
+        "spittles": []
+      },
+      {
+        "id": 8,
+        "username": "billis",
+        "password": "billis",
+        "fullName": "bill georgiou",
+        "spittles": []
+      },
+      {
+        "id": 15,
+        "username": "αα",
+        "password": "αα",
+        "fullName": "αα",
+        "spittles": []
+      }
+    ],
+    "spittles": [
+      {
+        "id": 11,
+        "message": "Good morning people!!!",
+        "timeSubmitted": "2008-09-23T07:10:10.000+00:00",
+        "spitter_id": 4
+      }
+    ]
+  }
+  

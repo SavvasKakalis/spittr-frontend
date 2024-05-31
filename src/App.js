@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import AddSpitter from './components/AddSpitter';
+import Spitters from './components/Spitters';
+import Spittles from './components/Spittles';
+import React, { useState } from 'react';
 
-function App() {
+const App = () => {
+  const [showSpitters, setShowSpitters] = useState(false);
+  const [showSpittles, setShowSpittles] = useState(false);
+  const [showAddSpitter, setShowAddSpitter] = useState(false);
+
+  const handleShowSpitters = () => {
+    setShowSpitters(true);
+    setShowSpittles(false);
+    setShowAddSpitter(false);
+  };
+
+  const handleShowSpittles = () => {
+    setShowSpitters(false); 
+    setShowSpittles(true);
+    setShowAddSpitter(false);
+  };
+  const handleCreateSpitter = () => {
+    setShowSpitters(false); 
+    setShowSpittles(false);
+    setShowAddSpitter(true);
+  };
+  const handleSpitterAdded = () => {
+    setShowAddSpitter(false);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Spittr</h1>
+      <nav>
+        <button onClick={handleShowSpitters}>Show Spitters</button>
+        <button onClick={handleShowSpittles}>Show Spittles</button>
+        <button onClick={handleCreateSpitter}>Add Spitter</button>
+      </nav>
+      {showSpitters && <Spitters />}
+      {showSpittles && <Spittles />}
+      {showAddSpitter && <AddSpitter onSpitterAdded={handleSpitterAdded} />}
     </div>
   );
-}
+};
 
 export default App;
