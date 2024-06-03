@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+import { getSpittles } from '../apiService';
 
 const Spittles = () => {
 
     const [spittles, setSpittles] = useState([]);
 
     useEffect(() => {
-      axios.get('http://localhost:5000/spittles')
-        .then(response => {
-          console.log(response.data);
-          setSpittles(response.data);
-        })
-        .catch(error => {
-          console.error('There was an error fetching the spitters!', error);
-        });
+      const fetchSpittles = async () => {
+        try {
+          const data = await getSpittles();
+          setSpittles(data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+  
+      fetchSpittles();
     }, []);
 
     return (

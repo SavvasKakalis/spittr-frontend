@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import { getSpitters, deleteSpitter } from '../apiService';
 
 const Spitters = () => {
 
@@ -12,26 +12,22 @@ const Spitters = () => {
     fetchSpitters();
   }, []);
 
-  const fetchSpitters = () => {
-    axios.get('http://localhost:5000/spitters')
-      .then(response => {
-        console.log(response.data);
-        setSpitters(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the spitters!', error);
-      });
+  const fetchSpitters = async () => {
+    try {
+      const data = await getSpitters();
+      setSpitters(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/spitters/${id}`)
-      .then(response => {
-        console.log('Spitter deleted:', response);
-        fetchSpitters();
-      })
-      .catch(error => {
-        console.error('There was an error deleting the spitter!', error);
-      });
+  const handleDelete = async (id) => {
+    try {
+      await deleteSpitter(id);
+      fetchSpitters();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

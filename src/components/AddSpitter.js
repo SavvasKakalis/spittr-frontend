@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { addSpitter } from '../apiService';
     
 
 const AddSpitter = ({onSpitterAdded}) => {
@@ -17,11 +17,7 @@ const AddSpitter = ({onSpitterAdded}) => {
     };
 
     try {
-      await axios.post('http://localhost:5000/spitters', newSpitter, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      await addSpitter(newSpitter);
       alert('Spitter added successfully');
       onSpitterAdded();
     } catch (error) {
