@@ -4,7 +4,7 @@ const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 export const getSpittles = async () => {
   try {
-    const response = await axios.get(`https://spittr-backend-af.azurewebsites.net/api/spitters`);
+    const response = await axios.get(`${BASE_URL}/spittles`);
     return response.data;
   } catch (error) {
     console.error('There was an error fetching the spittles!', error);
