@@ -36,6 +36,12 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+          app_build_command: |
+            echo "Installing Node.js 18.x..."
+            curl -sL https://deb.nodesource.com/setup_18.x | bash -
+            apt-get install -y nodejs
+            npm install
+            npm run build
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
