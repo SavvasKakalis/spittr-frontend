@@ -25,10 +25,10 @@ const Spittles = () => {
         <h2>List of Spittles</h2>
         <Form>
           <InputGroup className='my-3'>
-            <FormControl>
+            <FormControl
               onChange={(e) => setSearch(e.target.value)}
               placeholder = "Search Spittle"
-            </FormControl>
+            />
           </InputGroup>
         </Form>
         <Table striped bordered hover>
