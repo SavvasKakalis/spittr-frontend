@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
+import { Table, Form, Button, Container, InputGroup, FormControl } from 'react-bootstrap';
 import { getSpittles } from '../apiService';
 
 const Spittles = () => {
 
     const [spittles, setSpittles] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
       const fetchSpittles = async () => {
@@ -20,9 +21,17 @@ const Spittles = () => {
     }, []);
 
     return (
-        <div>
-          <h2>List of Spittles</h2>
-          <Table striped bordered hover>
+      <Container className="mt-4 p-3 bg-light">
+        <h2>List of Spittles</h2>
+        <Form>
+          <InputGroup className='my-3'>
+            <FormControl>
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder = "Search Spittle"
+            </FormControl>
+          </InputGroup>
+        </Form>
+        <Table striped bordered hover>
             <thead>
               <tr>
                 <th>ID</th>
@@ -32,7 +41,11 @@ const Spittles = () => {
               </tr>
             </thead>
             <tbody>
-              {spittles.map((spittle) => (
+              {spittles.filter((spittle) => {
+                return search.toLowerCase() === '' ? spittle : spittle.message.toLowerCase()
+                .includes(search)
+              })
+              .map((spittle) => (
                 <tr key={spittle.id}>
                   <td>{spittle.id}</td>
                   <td>{spittle.message}</td>
@@ -42,7 +55,7 @@ const Spittles = () => {
               ))}
             </tbody>
           </Table>
-        </div>
+      </Container>
       );
 
 
