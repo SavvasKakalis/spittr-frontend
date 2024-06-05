@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Form, Button, Container, InputGroup, FormControl } from 'react-bootstrap';
+import { Table, Form, Container, InputGroup, FormControl } from 'react-bootstrap';
 import { getSpittles } from '../apiService';
 
 const Spittles = () => {
