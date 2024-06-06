@@ -14,7 +14,7 @@ export const getSpittles = async () => {
 
 export const getSpitters = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/spitters`);
+    const response = await axios.get(`https://spittr-backend-af.azurewebsites.net/api/spitters`);
     return response.data;
   } catch (error) {
     console.error('There was an error fetching the spitters!', error);
