@@ -1,33 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import { getSpitters, deleteSpitter } from '../apiService';
+import React, {useState, useContext} from 'react';
 import { Table, Form, Button, Container, InputGroup, FormControl } from 'react-bootstrap';
+import { SpittersContext } from '../SpittersContext';
 
 const  Spitters = () => {
 
-  const [spitters, setSpitters] = useState([]);
+  const { spitters, handleDelete } = useContext(SpittersContext);
   const [search, setSearch] = useState('');
-
-  useEffect(() => {
-    fetchSpitters();
-  }, []);
-
-  const fetchSpitters = async () => {
-    try {
-      const data = await getSpitters();
-      setSpitters(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await deleteSpitter(id);
-      fetchSpitters();
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <Container className="mt-4 p-3 bg-light">

@@ -41,6 +41,20 @@
       "password": "αα",
       "fullName": "αα",
       "spittles": []
+    },
+    {
+      "id": "690b",
+      "username": "parapapa",
+      "password": "parapapa",
+      "fullName": "parapapa",
+      "spittles": []
+    },
+    {
+      "id": "d48f",
+      "username": "sas",
+      "password": "sas",
+      "fullName": "sas",
+      "spittles": []
     }
   ],
   "spittles": [
@@ -48,6 +62,12 @@
       "id": 11,
       "message": "Good morning people!!!",
       "timeSubmitted": "2008-09-23T07:10:10.000+00:00",
+      "spitter_id": 4
+    },
+    {
+      "id": 12,
+      "message": "Olympiakos is the champion of europa conference league",
+      "timeSubmitted": "224-05-23T07:20:10.000+00:00",
       "spitter_id": 4
     }
   ]
