@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import axios from 'axios';
-
+import { getSpitter } from '../apiService';
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -9,14 +8,23 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!username || !password) {
+        setError('All fields are required');
+        return;
+    }
+    
     try {
-      const response = await axios.get(`http://localhost:5000/spitters?username=${username}&password=${password}`);
+      console.log(`Attempting to log in with username: ${username}`);
+      const response = await getSpitter(username, password);
+      console.log('Response from server:', response); 
       if (response.data.length > 0) {
         onLogin(response.data[0]);
       } else {
         setError('Invalid username or password');
       }
     } catch (error) {
+      console.error('Error during login request:', error);
       setError('An error occurred. Please try again later.');
     }
   };

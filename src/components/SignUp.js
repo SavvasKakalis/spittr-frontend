@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import axios from 'axios';
 import { SpittersContext } from '../SpittersContext';
+import { checkUsernameExists } from '../apiService';
 
 const Signup = ({ onSignup }) => {
   const [username, setUsername] = useState('');
@@ -13,10 +13,16 @@ const Signup = ({ onSignup }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!username || !password || !fullName) {
+        setError('All fields are required');
+        return;
+    }
+    
     try {
-      const response = await axios.get(`http://localhost:5000/spitters?username=${username}`);
-      if (response.data.length > 0) {
-        setError('Username already exists');
+      const existingUser = await checkUsernameExists(username);
+      if (existingUser.length > 0) {
+          setError('Username already exists');
       } else {
         const newSpitter = {
           username,

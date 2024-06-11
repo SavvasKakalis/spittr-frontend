@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SpittlesProvider } from './SpittlesContext';
 import { SpittersProvider } from './SpittersContext';
+import { SpitterProvider } from './SpitterContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SpittlesProvider>
-      <SpittersProvider>
-        <App />
-      </SpittersProvider>
-    </SpittlesProvider>
+    <SpitterProvider>
+      <SpittlesProvider>
+        <SpittersProvider>
+          <App />
+        </SpittersProvider>
+      </SpittlesProvider>
+    </SpitterProvider>
   </React.StrictMode>
 );
 
